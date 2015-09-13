@@ -1,4 +1,26 @@
-<?
+<?php
+
+function compat_pathinfo($path, $opt=null)
+{
+	if (is_null($opt))
+	{
+		return pathinfo($path);
+	}
+
+	if (version_compare(phpversion(), '5.2.0', '>='))
+	{
+		return pathinfo($path, $opt);
+	}
+
+	if ($opt === PATHINFO_FILENAME)
+	{
+		return pathinfo_filename($path);
+	}
+	else
+	{
+		return pathinfo($path, $opt);
+	}
+}
 
 // configファイルのロード
 function RequireAllFiles($arg)
@@ -13,14 +35,13 @@ function RequireAllFiles($arg)
 	{
 		return;
 	}
-
-	//
+	
 	$files = array();
 	$d = dir($autoload);
 	while (false !== ($entry = $d->read()))
 	{
 		$path = $autoload . $entry;
-		if (! is_file($path))
+		if (! is_file($path)) 
 		{
 			continue;
 		}
@@ -39,6 +60,9 @@ function RequireAllFiles($arg)
 		require_once $file;
 	}
 }
+
+RequireAllFiles(dirname(__FILE__).DIRECTORY_SEPARATOR.'sys');
+RequireAllFiles(dirname(__FILE__).DIRECTORY_SEPARATOR.'config');
 
 // セッションの開始
 session_start();
