@@ -1,6 +1,10 @@
 <?php
 class hoge_fuga extends BaseJSONPage
 {
+	public function isPostOnly(){
+		return true;
+	}
+	
 	public function delegate()
 	{
 		//$pdo = Database::get()->handle();

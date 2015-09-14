@@ -9,9 +9,19 @@ class BaseJSONPage
 	{
 	}
 
+	public function isPostOnly()
+	{
+		return false;
+	}
+
 	public function run()
 	{
 		try{
+			if($this->isPostOnly()){
+				if($_SERVER['REQUEST_METHOD']!='POST')
+					$this->throwException(405,'Method Not Allowed');
+			}
+
 			$this->validate();
 			$ret = $this->delegate();
 		}
