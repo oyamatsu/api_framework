@@ -46,4 +46,8 @@ class hoge_fuga extends BaseJSONPage
 classファイルをフォルダにまとめて管理する場合、'.'でディレクトリ階層を表現する。
 `?p=test.hoge_fuga` にアクセスした場合、 `Application/scr/test/hoge_fuga.inc` のファイルを実行する。
 
+#API仕様書
+API仕様書の雛形をwikiに置いてあります。コピーして使ってください。
+
+※BacklogのMarkdown記法に最適化しているため、GitHub上ではレイアウトが崩れています。
 
