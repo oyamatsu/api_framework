@@ -1,11 +1,6 @@
 <?php
 class BaseJSONPage
 {
-	public function accessControlAllowOrigin()
-	{
-		return false;
-	}
-
 	public function delegate()
 	{
 	}
@@ -15,6 +10,11 @@ class BaseJSONPage
 	}
 
 	public function isPostOnly()
+	{
+		return false;
+	}
+
+	public function accessControlAllowOrigin()
 	{
 		return false;
 	}
