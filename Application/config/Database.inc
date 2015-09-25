@@ -87,7 +87,7 @@ class Database
 			$this->_handle =& $pdo;
 		}
 		catch(PDOException $e){
-			throw new Exception($e->getCode(), $e->getMessage());
+			throw new Exception($e->getMessage(), $e->getCode());
 		}
 	}
 
